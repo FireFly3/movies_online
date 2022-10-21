@@ -14,7 +14,7 @@ const MovieList = () => {
 
     useEffect(() => {
         dispatch(movieActions.getAll({page: query.get('page')}))
-    },[query])
+    },[query, dispatch])
 
     const prev = () => {
         setQuery(value => ({page: value.get('page') - 1}))
