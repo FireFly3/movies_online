@@ -1,13 +1,14 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
+import {movieReducer} from "./sliceas";
 
 const rootReducer = combineReducers({
-
+    movieReducer
 });
 
-const store = configureStore({
-    reducer:rootReducer
+const setupStore = () => configureStore({
+    reducer: rootReducer
 });
 
 export {
-    store
+    setupStore
 }
