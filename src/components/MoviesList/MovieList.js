@@ -8,13 +8,13 @@ import {MovieListCard} from "../MoviesListCard/MovieListCard";
 const MovieList = () => {
     const dispatch = useDispatch();
 
-    const {movies} = useSelector(state => state.movieReducer);
+    const {movies, loading, error} = useSelector(state => state.movieReducer);
 
     const [query, setQuery] = useSearchParams({page: '1'});
 
     useEffect(() => {
         dispatch(movieActions.getAll({page: query.get('page')}))
-    },[query, dispatch])
+    }, [query, dispatch])
 
     const prev = () => {
         setQuery(value => ({page: value.get('page') - 1}))
@@ -26,15 +26,14 @@ const MovieList = () => {
 
     return (
         <div>
+            {loading&&<div>Loading-------------</div>}
+            {error&&JSON.stringify(error)}
             {movies.results?.map(movie => <MovieListCard key={movie.id} movie={movie}/>)}
-            <button onClick={prev}>Prev page</button>
-            <button onClick={next}>Next page</button>
+            <button disabled={query.get('page') === '1'} onClick={prev}>Prev page</button>
+            <button disabled={query.get('page') === '500'} onClick={next}>Next page</button>
         </div>
     );
 };
 
 export {MovieList};
-
-
-
 

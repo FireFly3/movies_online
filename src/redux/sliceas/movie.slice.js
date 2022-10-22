@@ -23,6 +23,18 @@ const getAll = createAsyncThunk(
     }
 );
 
+const getById = createAsyncThunk(
+    'movieSlice/getById',
+    async ({id},{rejectWithValue})=>{
+        try {
+            const {data} = await movieService.getById(id)
+            return data
+        }catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+);
+
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
@@ -32,18 +44,28 @@ const movieSlice = createSlice({
             state.currentMovie = actions.payload
         }
     },
-    extraReducers: {
-        [getAll.fulfilled]: (state, actions) => {
-            state.movies = actions.payload
-        }
-    }
+    extraReducers: builder =>
+        builder
+            .addCase(getAll.fulfilled, (state, action) => {
+                state.movies = action.payload
+                state.loading = false
+            })
+            .addCase(getAll.rejected,(state,action)=>{
+                state.error = action.payload
+                state.loading = false
+            })
+            .addCase(getAll.pending, (state,action)=>{
+                state.loading = true
+            })
+
 
 });
 const {reducer: movieReducer, actions: {setCurrentMovie}} = movieSlice;
 
 const movieActions = {
     getAll,
-    setCurrentMovie
+    setCurrentMovie,
+    getById
 }
 
 export {
