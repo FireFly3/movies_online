@@ -1,9 +1,9 @@
 import React from 'react';
 
-const MovieInfo = () => {
+const MovieInfo = ({muvie}) => {
     return (
         <div>
-            
+            hi
         </div>
     );
 };
