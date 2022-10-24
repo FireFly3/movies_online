@@ -1,7 +1,6 @@
 import {Routes, Route, Navigate} from "react-router-dom";
 
 import {MainLayout} from "./layouts";
-import {MovieList, MoviesInfo} from "./components";
 import {MoviesPage} from "./pages/MoviesPage";
 import {MoviesInfoPage} from "./pages/MoviesInfoPage";
 

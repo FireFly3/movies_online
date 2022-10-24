@@ -6,7 +6,7 @@ import StarRatings from "react-star-ratings/build/star-ratings";
 
 const MovieInfo = ({movie}) => {
     console.log(movie);
-    const {backdrop_path, homepage, original_title, overview, poster_path, title, vote_average} = movie;
+    const {overview, poster_path, title, vote_average} = movie;
     return (
         <div>
             <div className={css.title}>{title}</div>

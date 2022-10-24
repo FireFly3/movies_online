@@ -68,7 +68,7 @@ const movieSlice = createSlice({
                 state.error = action.payload
                 state.loading = false
             })
-            .addCase(getAll.pending, (state, action)=>{
+            .addCase(getAll.pending, (state)=>{
                 state.loading = true
             })
             .addCase(getById.fulfilled, (state, action)=>{
@@ -78,7 +78,7 @@ const movieSlice = createSlice({
                 state.error = action.payload
                 state.loading = false
             })
-            .addCase(getById.pending, (state,action)=>{
+            .addCase(getById.pending, (state)=>{
                 state.loading = true
             })
             .addCase(search.fulfilled, (state,action)=>{
