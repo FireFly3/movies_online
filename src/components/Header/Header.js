@@ -1,32 +1,32 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
+import React, {useEffect, useRef, useState} from 'react';
+import {useDispatch} from "react-redux";
+import {Link} from "react-router-dom";
 
 import css from './Header.module.css'
 import {movieActions} from "../../redux";
-import {SearchMoviesPage} from "../../pages/SearchMoviesPage";
+
 
 const Header = () => {
+    const [query, setQuery] = useState('harri')
+
     const dispatch = useDispatch();
 
-    const {searchMovies} = useSelector(state => state.movieReducer);
-
-    const {query} = useParams();
-
     useEffect(() => {
-        dispatch(movieActions.search({query}))
-    }, [searchMovies, query, dispatch])
+        dispatch(movieActions.search({query}));
+    }, [dispatch, query])
 
+    const inputSearchValue = useRef()
 
-    const submit = () => {
-        const val = document.getElementById("input").value;
-        return val
-    };
+    const searchValue = (e) => {
+        e.preventDefault();
+        setQuery(inputSearchValue.current.value)
+        inputSearchValue.current.value = '';
+    }
+
     return (
-        <form className={css.block} onSubmit={submit}>
-            <input id="input" type="text" placeholder={'searching film'}/>
-            <button>Search</button>
-            {searchMovies.results?.map(movie => <SearchMoviesPage key={movie.id} movie={movie}/>)}
+        <form className={css.block}>
+            <input type="text" ref={inputSearchValue} placeholder="Search your interesting... "/>
+            <button  onClick={searchValue}> <Link to="/search">Search</Link></button>
         </form>
     );
 };

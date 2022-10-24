@@ -5,7 +5,7 @@ const urls = {
     getMovies:'/discover/movie',
     getById: '/movie',
     getGenres:'/',
-    searchMovie:'/search/movie',
+    searchMovie:'/search/keyword',
     getPoster:''
 }
 
