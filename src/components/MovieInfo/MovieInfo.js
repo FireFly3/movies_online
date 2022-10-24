@@ -1,8 +1,8 @@
 import React from 'react';
-import {urlImage} from "../../configs";
-
-import css from './MoviesInfo.module.css'
 import StarRatings from "react-star-ratings/build/star-ratings";
+
+import {urlImage} from "../../configs";
+import css from './MoviesInfo.module.css'
 
 const MovieInfo = ({movie}) => {
     console.log(movie);

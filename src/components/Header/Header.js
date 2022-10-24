@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
-
-import css from './Header.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
-import {movieActions} from "../../redux";
 import {useForm} from "react-hook-form";
+
+import css from './Header.module.css'
+import {movieActions} from "../../redux";
 
 const Header = () => {
 
@@ -17,12 +17,12 @@ const Header = () => {
     const {query} = useParams();
 
     useEffect(()=>{
-        dispatch(movieActions.search({page: query.get('query')}))
+        dispatch(movieActions.search({query}))
     },[searchMovies,query,dispatch])
 
 
     const submit = ()=> {
-
+return query
     };
     return (
         <form className={css.block} onSubmit={handleSubmit(submit)}>

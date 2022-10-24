@@ -1,12 +1,11 @@
 import React from 'react';
 import StarRatings from "react-star-ratings/build/star-ratings";
 import {Link} from "react-router-dom";
-import {urlImage} from "../../configs";
 
+import {urlImage} from "../../configs";
 import css from './MoviListCard.module.css'
 
 const MovieListCard = ({movie}) => {
-    console.log(movie);
 
     const {title, vote_average, id, poster_path} = movie;
 

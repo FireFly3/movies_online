@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {MovieList} from "../components";
 
 const MoviesPage = () => {
