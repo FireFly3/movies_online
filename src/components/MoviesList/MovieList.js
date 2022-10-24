@@ -4,6 +4,7 @@ import {useSearchParams} from "react-router-dom";
 
 import {movieActions} from "../../redux";
 import {MovieListCard} from "../MoviesListCard/MovieListCard";
+import css from './MovieList.module.css'
 
 const MovieList = () => {
     const dispatch = useDispatch();
@@ -26,11 +27,17 @@ const MovieList = () => {
 
     return (
         <div>
-            {loading&&<div>Loading-------------</div>}
-            {error&&JSON.stringify(error)}
-            {movies.results?.map(movie => <MovieListCard key={movie.id} movie={movie}/>)}
-            <button disabled={query.get('page') === '1'} onClick={prev}>Prev page</button>
-            <button disabled={query.get('page') === '500'} onClick={next}>Next page</button>
+            <div className={css.button}>
+                <button disabled={query.get('page') === '1'} onClick={prev}>Prev page</button>
+                <button disabled={query.get('page') === '500'} onClick={next}>Next page</button>
+            </div>
+            <div className={css.button}>
+                {loading && <div>Loading-------------</div>}
+            </div>
+            <div className={css.flex}>
+                {error && JSON.stringify(error)}
+                {movies.results?.map(movie => <MovieListCard key={movie.id} movie={movie}/>)}
+            </div>
         </div>
     );
 };

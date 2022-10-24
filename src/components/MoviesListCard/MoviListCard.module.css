@@ -1,0 +1,15 @@
+.poster {
+    display: block;
+    width: 200px;
+}
+
+.block {
+    width: 250px;
+    height: 400px;
+}
+
+.title {
+    color: black;
+    width: 200px;
+    height: 35px;
+}

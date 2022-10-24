@@ -6,7 +6,6 @@ const MainLayout = () => {
     return (
         <div>
             <Header/>
-            <MovieList/>
             <Outlet/>
         </div>
     );

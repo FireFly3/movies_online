@@ -8,7 +8,7 @@ const MoviesInfo = () => {
     const dispatch = useDispatch();
 
     const {currentMovie} = useSelector(state => state.movieReducer);
-
+   
     const {id} = useParams();
 
     useEffect(() => {

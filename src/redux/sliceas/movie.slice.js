@@ -6,9 +6,8 @@ const initialState = {
     movies: [],
     currentMovie: null,
     loading: false,
-    error: null
-
-
+    error: null,
+    searchMovies:[]
 };
 
 const getAll = createAsyncThunk(
@@ -35,6 +34,21 @@ const getById = createAsyncThunk(
     }
 );
 
+const search = createAsyncThunk(
+    'movieSlice/search',
+    async ({query}, {rejectWithValue}) => {
+        try {
+            const {data} = await movieService.search(query);
+            return data
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+);
+
+
+
+
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
@@ -54,11 +68,21 @@ const movieSlice = createSlice({
                 state.error = action.payload
                 state.loading = false
             })
-            .addCase(getAll.pending, (state,action)=>{
+            .addCase(getAll.pending, (state, action)=>{
                 state.loading = true
             })
             .addCase(getById.fulfilled, (state, action)=>{
                 state.currentMovie = action.payload
+            })
+            .addCase(getById.rejected,(state,action)=>{
+                state.error = action.payload
+                state.loading = false
+            })
+            .addCase(getById.pending, (state,action)=>{
+                state.loading = true
+            })
+            .addCase(search.fulfilled, (state,action)=>{
+                state.searcMovies = action.payload
             })
 
 

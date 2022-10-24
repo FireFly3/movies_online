@@ -1,0 +1,23 @@
+.backdrop {
+    display: block;
+    width: 300px;
+}
+
+.block {
+    display: flex;
+}
+
+.overview {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.title{
+    font-size: 25px;
+    color: #272786;
+}
+
+.overview{
+    font-size: 20px;
+}
