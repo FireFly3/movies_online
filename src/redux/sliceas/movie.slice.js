@@ -92,7 +92,8 @@ const {reducer: movieReducer, actions: {setCurrentMovie}} = movieSlice;
 const movieActions = {
     getAll,
     setCurrentMovie,
-    getById
+    getById,
+    search
 }
 
 export {
