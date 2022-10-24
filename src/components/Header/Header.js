@@ -1,37 +1,35 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
-import {useForm} from "react-hook-form";
 
 import css from './Header.module.css'
 import {movieActions} from "../../redux";
+import {SearchMoviesPage} from "../../pages/SearchMoviesPage";
 
 const Header = () => {
-
-    const {register, handleSubmit} = useForm();
-
     const dispatch = useDispatch();
 
     const {searchMovies} = useSelector(state => state.movieReducer);
 
     const {query} = useParams();
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(movieActions.search({query}))
-    },[searchMovies,query,dispatch])
+    }, [searchMovies, query, dispatch])
 
 
-    const submit = ()=> {
-return query
+    const submit = () => {
+        const val = document.getElementById("input").value;
+        return val
     };
     return (
-        <form className={css.block} onSubmit={handleSubmit(submit)}>
-            <input type="text" placeholder={'searching film'} {...register}/>
+        <form className={css.block} onSubmit={submit}>
+            <input id="input" type="text" placeholder={'searching film'}/>
             <button>Search</button>
+            {searchMovies.results?.map(movie => <SearchMoviesPage key={movie.id} movie={movie}/>)}
         </form>
     );
 };
-
 
 
 export {Header};
