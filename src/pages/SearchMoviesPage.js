@@ -6,9 +6,11 @@ const SearchMoviesPage = () => {
 
     const {searchMovies} = useSelector(state => state.movieReducer);
 
+    console.log(searchMovies);
+
     return (
         <div>
-            {searchMovies.result?.map(movie => <MovieListCard key={movie.id} movie={movie}/>)}
+            {searchMovies?.map(movie => <MovieListCard key={movie.id} movie={movie}/>)}
         </div>
     );
 };

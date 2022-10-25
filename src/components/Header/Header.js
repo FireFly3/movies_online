@@ -7,13 +7,17 @@ import {movieActions} from "../../redux";
 
 
 const Header = () => {
-    const [query, setQuery] = useState('harri')
+    const [query, setQuery] = useState('')
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(movieActions.search({query}));
+        if(query!== ''){
+            dispatch(movieActions.search({query}));
+        }
     }, [dispatch, query])
+
+    console.log(query);
 
     const inputSearchValue = useRef()
 
