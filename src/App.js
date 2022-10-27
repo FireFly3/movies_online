@@ -1,9 +1,8 @@
 import {Routes, Route, Navigate} from "react-router-dom";
 
 import {MainLayout} from "./layouts";
-import {MoviesPage} from "./pages/MoviesPage";
-import {MoviesInfoPage} from "./pages/MoviesInfoPage";
-import {SearchMoviesPage} from "./pages/SearchMoviesPage";
+import {MoviesInfoPage, MoviesPage, SearchMoviesPage} from "./pages";
+
 
 function App() {
     return (

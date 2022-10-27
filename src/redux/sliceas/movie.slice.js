@@ -7,7 +7,8 @@ const initialState = {
     currentMovie: null,
     loading: false,
     error: null,
-    searchMovies:[]
+    searchMovies:[],
+    genres:[]
 };
 
 const getAll = createAsyncThunk(
@@ -37,11 +38,22 @@ const getById = createAsyncThunk(
 const search = createAsyncThunk(
     'movieSlice/search',
     async ({query}, {rejectWithValue}) => {
-        console.log(query)
         try {
             const {data} = await movieService.search(query);
             return data
         } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+);
+
+const getGaneres = createAsyncThunk(
+    'movieSlice/genres',
+    async (_,{rejectWithValue})=>{
+        try {
+            const {data} = await movieService.getGenres();
+            return data
+        }catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -80,10 +92,26 @@ const movieSlice = createSlice({
                 state.loading = true
             })
             .addCase(search.fulfilled, (state,action)=>{
-                console.log(action.payload)
                 state.searchMovies = action.payload.results
-
-
+                state.loading = false
+            })
+            .addCase(search.rejected, (state,action)=>{
+                state.error = action.payload
+                state.loading = false
+            })
+            .addCase(search.pending, (state,action)=>{
+                state.loading = true
+            })
+            .addCase(getGaneres.fulfilled,(state,action)=>{
+                state.genres = action.payload
+                state.loading = false
+            })
+            .addCase(getGaneres.rejected,(state, action)=>{
+                state.errore = action.payload
+                state.loading = false
+            })
+            .addCase(getGaneres.pending,(state, action)=>{
+                state.loading = true
             })
 
 
@@ -94,7 +122,8 @@ const movieActions = {
     getAll,
     setCurrentMovie,
     getById,
-    search
+    search,
+    getGaneres
 }
 
 export {

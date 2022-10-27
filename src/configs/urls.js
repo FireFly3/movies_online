@@ -4,9 +4,8 @@ const urlImage = 'https://image.tmdb.org/t/p/w500/'
 const urls = {
     getMovies:'/discover/movie',
     getById: '/movie',
-    getGenres:'/',
+    getGenres:'/genre/movie/list',
     searchMovie:'/search/movie',
-    getPoster:''
 }
 
 export {
