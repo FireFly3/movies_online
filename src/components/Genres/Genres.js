@@ -12,7 +12,7 @@ const Genres = () => {
 
     useEffect(() => {
         dispatch(movieActions.getGaneres())
-    }, [genres, dispatch])
+    }, [dispatch])
     return (
         <div>
             {genres.results?.map(genre => <Genre key={genre.id} genre={genre}/>)}
