@@ -15,7 +15,7 @@ const Genres = () => {
     }, [dispatch])
     return (
         <div>
-            {genres.results?.map(genre => <Genre key={genre.id} genre={genre}/>)}
+            {genres.genres?.map(genre => <Genre key={genre.id} genre={genre}/>)}
         </div>
     );
 };

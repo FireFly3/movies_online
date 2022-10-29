@@ -29,12 +29,13 @@ const Header = () => {
     }
 
     return (
-        <form >
-            <div className={css.block}><input type="text" ref={inputSearchValue} placeholder="Search your interesting... "/>
+        <div>
+            <div className={css.block}>
+                <input type="text" ref={inputSearchValue} placeholder="Search"/>
                 <button onClick={searchValue}><Link to="/search">Search</Link></button>
             </div>
-            <div><Genres/></div>
-        </form>
+            <div className={css.genres}><Genres/></div>
+        </div>
     );
 };
 

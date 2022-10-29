@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Genre = ({genre}) => {
-    const {id,name} = genre;
+    const {name} = genre;
     return (
         <div>
-            {name}
+            <input type="checkbox"/>{name}
         </div>
     );
 };
