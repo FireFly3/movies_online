@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 
 import css from './Header.module.css'
 import {movieActions} from "../../redux";
+import {Genres} from "../Genres/Genres";
 
 
 const Header = () => {
@@ -28,9 +29,11 @@ const Header = () => {
     }
 
     return (
-        <form className={css.block}>
-            <input type="text" ref={inputSearchValue} placeholder="Search your interesting... "/>
-            <button  onClick={searchValue}> <Link to="/search">Search</Link></button>
+        <form >
+            <div className={css.block}><input type="text" ref={inputSearchValue} placeholder="Search your interesting... "/>
+                <button onClick={searchValue}><Link to="/search">Search</Link></button>
+            </div>
+            <div><Genres/></div>
         </form>
     );
 };
