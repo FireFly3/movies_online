@@ -1,6 +1,8 @@
 import React from 'react';
-import {MovieListCard} from "../components";
 import {useSelector} from "react-redux";
+
+import {MovieListCard} from "../components";
+import css from './SearchMovie.module.css'
 
 const SearchMoviesPage = () => {
 
@@ -9,7 +11,7 @@ const SearchMoviesPage = () => {
     console.log(searchMovies);
 
     return (
-        <div>
+        <div className={css.flex}>
             {searchMovies?.map(movie => <MovieListCard key={movie.id} movie={movie}/>)}
         </div>
     );
