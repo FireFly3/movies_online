@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {movieActions} from "../../redux";
 import {Genre} from "../Genre/Genre";
-import css from "./Generes.module.css";
+import css from "./Genres.module.css";
 
 
 const Genres = () => {

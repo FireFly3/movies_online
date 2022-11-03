@@ -47,7 +47,7 @@ const search = createAsyncThunk(
     }
 );
 
-const getGaneres = createAsyncThunk(
+const getGenres = createAsyncThunk(
     'movieSlice/genres',
     async (_,{rejectWithValue})=>{
         try {
@@ -99,18 +99,18 @@ const movieSlice = createSlice({
                 state.error = action.payload
                 state.loading = false
             })
-            .addCase(search.pending, (state,action)=>{
+            .addCase(search.pending, (state)=>{
                 state.loading = true
             })
-            .addCase(getGaneres.fulfilled,(state,action)=>{
+            .addCase(getGenres.fulfilled,(state,action)=>{
                 state.genres = action.payload
                 state.loading = false
             })
-            .addCase(getGaneres.rejected,(state, action)=>{
+            .addCase(getGenres.rejected,(state, action)=>{
                 state.errore = action.payload
                 state.loading = false
             })
-            .addCase(getGaneres.pending,(state, action)=>{
+            .addCase(getGenres.pending,(state)=>{
                 state.loading = true
             })
 
@@ -123,7 +123,7 @@ const movieActions = {
     setCurrentMovie,
     getById,
     search,
-    getGaneres
+    getGenres
 }
 
 export {
