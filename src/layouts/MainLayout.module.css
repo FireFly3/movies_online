@@ -1,0 +1,30 @@
+.block {
+    display: flex;
+}
+
+.header {
+    height: 150px;
+    background-color: lightsteelblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.genres {
+    width: 10%;
+    height: 500px;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    padding-top: 15px;
+}
+
+.films {
+    width: 90%;
+    background-color: aliceblue;
+    border-radius: 15px;
+    margin-left: 15px;
+}

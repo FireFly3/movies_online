@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 
 import css from './Header.module.css'
 import {movieActions} from "../../redux";
-import {Genres} from "../Genres/Genres";
 
 
 const Header = () => {
@@ -26,15 +25,18 @@ const Header = () => {
         e.preventDefault();
         setQuery(inputSearchValue.current.value)
         inputSearchValue.current.value = '';
+        console.log(inputSearchValue.current.value);
+
     }
 
     return (
         <div>
+            <p><Link to='/'>Home</Link></p>
             <div className={css.block}>
                 <input type="text" ref={inputSearchValue} placeholder="Search"/>
                 <button onClick={searchValue}><Link to="/search">Search</Link></button>
             </div>
-            <div className={css.genres}><Genres/></div>
+
         </div>
     );
 };

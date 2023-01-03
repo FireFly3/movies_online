@@ -1,12 +1,15 @@
 import React from 'react';
 
-
-
 const Genre = ({genre}) => {
-    const {name} = genre;
+    const {name, id} = genre;
+    let takeId = () => {
+        console.log(id)
+    }
     return (
         <div>
-            <input type="checkbox"/>{name}
+
+            <div onClick={takeId}>{name}</div>
+
         </div>
     );
 };

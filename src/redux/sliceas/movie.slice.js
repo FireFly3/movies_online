@@ -63,15 +63,16 @@ const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
 
-    reducers: {
-        setCurrentMovie: (state, actions) => {
-            state.currentMovie = actions.payload
-        }
-    },
+    // reducers: {
+    //     setCurrentMovie: (state, actions) => {
+    //         state.currentMovie = actions.payload
+    //     }
+    // },
     extraReducers: builder =>
         builder
             .addCase(getAll.fulfilled, (state, action) => {
                 state.movies = action.payload
+                console.log(state.movies);
                 state.loading = false
             })
             .addCase(getAll.rejected,(state,action)=>{
@@ -93,6 +94,7 @@ const movieSlice = createSlice({
             })
             .addCase(search.fulfilled, (state,action)=>{
                 state.searchMovies = action.payload.results
+                console.log(state.searchMovies);
                 state.loading = false
             })
             .addCase(search.rejected, (state,action)=>{
@@ -116,11 +118,11 @@ const movieSlice = createSlice({
 
 
 });
-const {reducer: movieReducer, actions: {setCurrentMovie}} = movieSlice;
+const {reducer: movieReducer, /*actions: {setCurrentMovie}*/} = movieSlice;
 
 const movieActions = {
     getAll,
-    setCurrentMovie,
+    /*setCurrentMovie,*/
     getById,
     search,
     getGenres

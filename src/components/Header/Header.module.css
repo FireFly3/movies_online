@@ -1,7 +1,18 @@
 .block{
-    height: 150px;
-    background-color: beige;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/*.header {*/
+/*    height: 150px;*/
+/*    background-color: lightsteelblue;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: space-around;*/
+/*}*/
+.genres {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
 }

@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {movieActions} from "../../redux";
 import {Genre} from "../Genre/Genre";
-import css from "./Genres.module.css";
+// import css from "./Genres.module.css";
 
 
 const Genres = () => {
@@ -11,13 +11,11 @@ const Genres = () => {
 
     const {genres} = useSelector(state => state.movieReducer);
 
-    console.log(genres);
-
     useEffect(() => {
-        dispatch(movieActions.getGaneres())
+        dispatch(movieActions.getGenres())
     }, [dispatch])
     return (
-        <div className={css.check}>
+        <div>
             {genres.genres?.map(genre => <Genre key={genre.id} genre={genre}/>)}
         </div>
     );

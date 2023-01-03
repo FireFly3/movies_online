@@ -9,3 +9,9 @@
     justify-content: center;
     margin: 10px;
 }
+
+.loading {
+    height: 35px;
+    display: flex;
+    justify-content: center;
+}

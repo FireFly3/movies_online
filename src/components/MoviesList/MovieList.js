@@ -13,8 +13,6 @@ const MovieList = () => {
 
     const [query, setQuery] = useSearchParams({page: '1'});
 
-    console.log(movies);
-
     useEffect(() => {
         dispatch(movieActions.getAll({page: query.get('page')}))
     }, [query, dispatch])
@@ -33,7 +31,7 @@ const MovieList = () => {
                 <button disabled={query.get('page') === '1'} onClick={prev}>Prev page</button>
                 <button disabled={query.get('page') === '500'} onClick={next}>Next page</button>
             </div>
-            <div className={css.button}>
+            <div className={css.loading}>
                 {loading && <div>Loading-------------</div>}
             </div>
             <div className={css.flex}>
